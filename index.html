@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Contador Dinamico</title>
+	<style>
+		.counter{
+			text-align: center;
+			font-size: 100px;
+		}
+
+		#count_uno{
+			text-align: center;
+			font-size: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div id='count_uno'>
+	  <div class="counter">0</div>
+	</div>
+	<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/plugins/CSSPlugin.min.js"></script>
+	<script>
+		function count(){
+		  var counter = { var: 0 };
+		  TweenMax.to(counter, 21, {
+		    var: 100, 
+		    onUpdate: function () { 		    
+		      var number = Math.floor(Math.random() * (99 - 1)) + 1;
+		      $('.counter').html(number);		 
+		      setTimeout(function(){ 
+		        $('.counter').remove()
+		        $('#count_uno').text(32)
+		      }, 3000);
+		    },
+		    onComplete: function(){
+		      count();
+		    },    
+		    ease:Circ.easeOut
+		  });
+		}
+
+		count();
+	</script>
+
+</body>
+</html>
